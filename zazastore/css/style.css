@@ -1,0 +1,533 @@
+/* ============================================================
+   ZAZASTORE — zaza_style.css  v2.0
+   Paleta: Azul #4FC3F7 + Rojo #E53935 sobre fondo #050d1a
+   ============================================================ */
+
+/* ── Variables ─────────────────────────────────────────────── */
+:root {
+    --azul:      #4FC3F7;
+    --azul-dark: #0288D1;
+    --rojo:      #E53935;
+    --rojo-dark: #ef5350;
+    --fondo:     #050d1a;
+    --fondo2:    #080f1e;
+    --surface:   #0d1a2e;
+    --borde:     #1a2f4a;
+    --blanco:    #ffffff;
+    --gris:      #888888;
+}
+
+/* ── Reset base ─────────────────────────────────────────────── */
+html { box-sizing: border-box; font-size: 62.5%; }
+*, *::before, *::after { box-sizing: inherit; }
+
+body {
+    background-color: var(--fondo);
+    color: var(--blanco);
+    margin: 0; padding: 0;
+    font-family: Arial, sans-serif;
+    position: relative;
+}
+
+img { display: block; max-width: 100%; height: auto; }
+
+/* ── Marca de agua ──────────────────────────────────────────── */
+body::before {
+    content: "";
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='120'%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-weight='900' font-size='26' fill='rgba(79,195,247,0.07)' letter-spacing='4' transform='rotate(-25 200 60)'%3AZAZASTORE%3C/text%3E%3C/svg%3E");
+    background-repeat: repeat;
+    pointer-events: none; z-index: 0; user-select: none;
+}
+
+/* ── Header ─────────────────────────────────────────────────── */
+#headerTHUNDERT.fixed-header,
+#headerZAZASTORE.fixed-header {
+    position: fixed; top: 0; left: 0;
+    width: 100%; z-index: 1000;
+    background-color: var(--fondo2);
+    border-bottom: 2px solid var(--azul);
+}
+
+#header {
+    height: 80px;
+    display: flex; align-items: center;
+}
+
+.wrapper {
+    width: 90%; margin: 0 auto;
+    display: flex; justify-content: space-between; align-items: center;
+}
+
+/* Logo texto */
+#site-logo a {
+    text-decoration: none;
+    font-family: Arial, sans-serif; font-weight: 900;
+    font-size: 1.5rem; letter-spacing: 4px;
+    background: linear-gradient(90deg, var(--azul-dark) 60%, var(--rojo) 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Logo imagen */
+#site-logo img {
+    width: 120px; height: auto; display: block;
+}
+
+.nav-links { display: flex; align-items: center; }
+.nav-links ul { display: flex; list-style: none; margin: 0; padding: 0; }
+
+.d-flex {
+    display: flex; margin: 0; padding: 0;
+    list-style: none; gap: 20px;
+}
+
+.link-header a {
+    text-decoration: none;
+    color: var(--blanco);
+    font-size: 13px; letter-spacing: 2px;
+    text-transform: uppercase; font-weight: 800;
+    transition: color 0.2s;
+}
+.link-header a:hover { color: var(--azul); }
+
+@media (max-width: 768px) {
+    #headerTHUNDERT.fixed-header,
+    #headerZAZASTORE.fixed-header { height: auto; padding: 10px 0; }
+    .wrapper { flex-direction: column; align-items: flex-start; padding-left: 16px; gap: 6px; }
+    #site-logo img { width: 70px; }
+    #site-logo a { font-size: 1.2rem; letter-spacing: 3px; }
+    .d-flex { gap: 12px; flex-wrap: wrap; }
+    .link-header a { font-size: 11px; letter-spacing: 1px; }
+    #pageZAZASTORE,
+    #pageTHUNDERT { padding-top: 110px !important; }
+}
+
+/* ── WhatsApp flotante ──────────────────────────────────────── */
+.wa-float {
+    position: fixed; bottom: 20px; right: 20px; z-index: 1000;
+}
+.wa-float img { width: 50px; height: 50px; display: block; }
+
+/* ── Portada / Banner ───────────────────────────────────────── */
+.portada {
+    background-image: url("../img/banneer.png");
+    background-size: cover;
+    background-position: center;
+    background-color: rgba(5, 13, 26, 0.55);
+    background-blend-mode: overlay;
+    height: 100vh; width: 100%;
+}
+
+@media (max-width: 768px) {
+    .portada {
+        height: 240px;
+        background-size: cover;
+        background-position: center;
+        background-blend-mode: overlay;
+    }
+}
+
+/* ── Contenedor principal ───────────────────────────────────── */
+.contenedor-principal {
+    position: relative;
+    z-index: 1;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+/* ── Título de sección grande ───────────────────────────────── */
+.titulo-seccion-grande {
+    color: var(--blanco);
+    font-family: Arial, sans-serif; font-weight: 900;
+    text-align: center; text-transform: uppercase;
+    font-size: 3rem; letter-spacing: 8px;
+    margin: 40px 0 20px; display: block; width: 100%;
+}
+.titulo-seccion-grande::after {
+    content: '';
+    display: block; width: 60px; height: 3px;
+    background: linear-gradient(90deg, var(--azul), var(--rojo));
+    margin: 10px auto 0;
+}
+
+@media (max-width: 768px) {
+    .titulo-seccion-grande { font-size: 1.8rem; letter-spacing: 4px; margin: 24px 0 14px; }
+}
+
+/* ── Carrusel "Lo Último" ───────────────────────────────────── */
+.carrusel-wrapper {
+    position: relative; display: flex; align-items: center;
+    width: 100%; max-width: 1400px; margin: 0 auto;
+    padding: 0 56px;
+    z-index: 2;
+}
+@media (max-width: 768px) { .carrusel-wrapper { padding: 0 40px 0 10px; } }
+
+.bg-gray.seccion-ultimo,
+.seccion-ultimo {
+    display: flex; flex-direction: row; flex-wrap: nowrap;
+    justify-content: flex-start; align-items: stretch;
+    gap: 15px; padding: 10px; width: 100%;
+    overflow-x: auto; scroll-behavior: smooth;
+    background-color: transparent;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: var(--azul-dark) var(--surface);
+}
+.seccion-ultimo::-webkit-scrollbar { height: 4px; }
+.seccion-ultimo::-webkit-scrollbar-thumb { background: var(--azul-dark); border-radius: 10px; }
+.seccion-ultimo::-webkit-scrollbar-track { background: var(--surface); }
+@media (max-width: 768px) { .seccion-ultimo::-webkit-scrollbar { display: none; } }
+
+.flecha-carrusel {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    background: var(--azul-dark); color: #fff;
+    border: none; width: 44px; height: 44px;
+    border-radius: 50%; cursor: pointer;
+    z-index: 100; font-size: 1.4rem; transition: 0.2s;
+    flex-shrink: 0;
+}
+.flecha-carrusel.prev { left: 5px; }
+.flecha-carrusel.next { right: 5px; }
+.flecha-carrusel:hover { background: var(--rojo); transform: translateY(-50%) scale(1.1); }
+
+/* ── Tarjeta del carrusel (ultimo-ind) ──────────────────────── */
+.ultimo-ind {
+    background-color: var(--surface);
+    border: 1px solid var(--borde);
+    border-radius: 0;
+    box-shadow: none;
+    min-width: 260px; max-width: 260px;
+    flex-shrink: 0;
+    padding: 0;
+    display: flex; flex-direction: column; align-items: stretch;
+    scroll-snap-align: center;
+    overflow: hidden;
+}
+@media (max-width: 768px) {
+    .ultimo-ind { min-width: 62%; max-width: 62%; }
+}
+
+/* Imagen del carrusel — proporción cuadrada */
+.ultimo-ind img.producto,
+.ultimo-ind .producto {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    border-radius: 0;
+    margin: 0; padding: 0;
+    transition: transform 0.4s ease;
+    height: auto;        /* sobrescribe cualquier height fijo */
+    max-height: none;
+}
+.ultimo-ind:hover img.producto,
+.ultimo-ind:hover .producto { transform: scale(1.04); }
+
+/* Info dentro del carrusel */
+.ultimo-info { padding: 12px 10px 4px; text-align: center; }
+
+.nombre-pro {
+    font-family: Arial, sans-serif; font-weight: 900;
+    font-size: 1rem; text-transform: uppercase;
+    color: var(--blanco); display: block;
+    margin: 0 0 4px; letter-spacing: 1px;
+}
+.precio,
+.precio-ultimo,
+.txt-base-carousel-section-price {
+    font-family: Arial, sans-serif; font-weight: 900;
+    font-size: 1.3rem; color: var(--azul);
+    margin: 0 0 10px; display: block;
+}
+
+.boton-comprar-wa {
+    display: block;
+    background: linear-gradient(90deg, var(--azul-dark), var(--azul));
+    color: #fff; text-align: center;
+    padding: 10px; margin: 0 10px 14px;
+    text-decoration: none; font-weight: 900;
+    font-size: 13px; font-family: Arial, sans-serif;
+    text-transform: uppercase; letter-spacing: 1px;
+    border-radius: 0; transition: background 0.2s;
+}
+.boton-comprar-wa:hover {
+    background: linear-gradient(90deg, var(--rojo), var(--rojo-dark));
+}
+
+@media (max-width: 767px) {
+    .nombre-pro { font-size: 0.85rem; }
+    .precio, .precio-ultimo, .txt-base-carousel-section-price { font-size: 1.1rem; }
+    .boton-comprar-wa { font-size: 0.8rem; padding: 8px 10px; }
+}
+
+/* ── Tallas ─────────────────────────────────────────────────── */
+.tallas-label {
+    color: var(--gris); font-size: 10px;
+    letter-spacing: 2px; font-family: Arial, sans-serif;
+    margin-bottom: 6px; display: block; text-align: center;
+}
+.tallas-grupo {
+    display: flex; flex-wrap: wrap;
+    gap: 5px; justify-content: center; margin-bottom: 10px;
+}
+.talla-btn {
+    background: transparent;
+    border: 1px solid var(--borde);
+    color: var(--blanco);
+    padding: 5px 10px;
+    font-family: Arial, sans-serif; font-size: 11px;
+    font-weight: 700; cursor: pointer;
+    letter-spacing: 1px; transition: all 0.15s;
+}
+.talla-btn:hover { border-color: var(--azul); color: var(--azul); }
+.talla-btn.selected { background: var(--azul); color: #000; border-color: var(--azul); }
+@media (max-width: 768px) { .talla-btn { padding: 4px 8px; font-size: 10px; } }
+
+/* ── Género ─────────────────────────────────────────────────── */
+.genero-grupo { display: flex; gap: 6px; justify-content: center; margin-bottom: 10px; }
+.genero-btn {
+    background: transparent; border: 1px solid var(--borde);
+    color: var(--gris); padding: 5px 14px;
+    font-family: Arial, sans-serif; font-size: 10px;
+    font-weight: 700; cursor: pointer; letter-spacing: 2px;
+    transition: all 0.15s;
+}
+.genero-btn:hover { border-color: var(--blanco); color: var(--blanco); }
+.genero-btn.selected { border-color: var(--blanco); color: var(--blanco); background: rgba(255,255,255,0.06); }
+.genero-btn.hombre.selected { border-color: var(--azul); color: var(--azul); background: rgba(79,195,247,0.08); }
+.genero-btn.mujer.selected  { border-color: var(--rojo);  color: var(--rojo);  background: rgba(229,57,53,0.08); }
+
+/* ── Secciones de marca (sneakers) ─────────────────────────── */
+.titulo-marca {
+    font-family: Arial, sans-serif; font-weight: 900;
+    color: var(--blanco);
+    font-size: 2.2rem; text-align: center;
+    text-transform: uppercase; letter-spacing: 8px;
+    margin: 50px 0 20px; display: block; width: 100%;
+}
+.titulo-marca::after {
+    content: '';
+    display: block; width: 50px; height: 3px;
+    background: linear-gradient(90deg, var(--azul), var(--rojo));
+    margin: 10px auto 0;
+}
+@media (max-width: 768px) { .titulo-marca { font-size: 1.6rem; letter-spacing: 4px; margin: 30px 0 12px; } }
+
+.seccion-marca { padding: 20px 0; background: none; }
+
+.contenedor-horizontal {
+    display: flex; flex-direction: row; flex-wrap: nowrap;
+    overflow-x: auto; width: 100%;
+    gap: 15px; padding: 15px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: var(--azul-dark) var(--surface);
+    cursor: grab;
+}
+.contenedor-horizontal:active { cursor: grabbing; }
+.contenedor-horizontal::-webkit-scrollbar { height: 4px; }
+.contenedor-horizontal::-webkit-scrollbar-thumb { background: var(--azul-dark); border-radius: 10px; }
+.contenedor-horizontal::-webkit-scrollbar-track { background: var(--surface); }
+@media (max-width: 768px) { .contenedor-horizontal::-webkit-scrollbar { display: none; } }
+
+/* Tarjetas dentro de contenedor-horizontal */
+.contenedor-horizontal .ultimo-ind {
+    flex: 0 0 280px;
+    min-width: 280px; max-width: 280px;
+}
+.contenedor-horizontal .ultimo-ind img {
+    width: 100%;
+    aspect-ratio: 3 / 4;      /* proporción retrato para ropa/zapatillas */
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    height: auto;
+    max-height: none;
+    transition: transform 0.4s ease;
+}
+.contenedor-horizontal .ultimo-ind:hover img { transform: scale(1.03); }
+
+@media (max-width: 768px) {
+    .contenedor-horizontal .ultimo-ind { flex: 0 0 62%; min-width: 62%; max-width: 62%; }
+}
+
+/* ── Filtros ─────────────────────────────────────────────────── */
+.contenedor-filtros {
+    max-width: 1200px; margin: 0 auto;
+    padding: 0 20px 20px; position: relative;
+}
+.btn-filtro {
+    background: none; border: 1px solid var(--azul);
+    color: var(--azul); padding: 8px 18px;
+    font-family: Arial, sans-serif; font-weight: 900;
+    cursor: pointer; letter-spacing: 2px;
+    font-size: 12px; transition: all 0.2s;
+}
+.btn-filtro:hover { background: var(--azul); color: #000; }
+
+.menu-desplegable {
+    display: none; position: absolute;
+    background-color: var(--surface);
+    border: 1px solid var(--borde);
+    z-index: 100; min-width: 150px;
+    top: 36px; left: 20px;
+}
+.menu-desplegable a {
+    color: var(--blanco); padding: 10px 15px;
+    text-decoration: none; display: block;
+    font-size: 12px; font-family: Arial, sans-serif; letter-spacing: 1px;
+}
+.menu-desplegable a:hover { background: var(--azul); color: #000; }
+.mostrar { display: block !important; }
+.item-oculto { display: none !important; }
+
+/* ── Grid de productos ───────────────────────────────────────── */
+.grid-productos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    max-width: 1200px; margin: 0 auto; padding: 0 20px;
+}
+
+.tarjeta {
+    background: var(--surface);
+    border: 1px solid var(--borde);
+    cursor: pointer; overflow: hidden;
+}
+.tarjeta:hover .tarjeta-img { transform: scale(1.03); }
+
+.tarjeta-img-wrap {
+    overflow: hidden;
+    aspect-ratio: 3 / 4;        /* proporción retrato — imágenes correctas */
+    background: var(--fondo2);
+}
+.tarjeta-img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.tarjeta-info { padding: 14px 8px 18px; text-align: center; }
+
+.tarjeta-nombre {
+    color: var(--blanco);
+    font-family: Arial, sans-serif; font-weight: 900;
+    font-size: 1rem; text-transform: uppercase;
+    letter-spacing: 1px; display: block;
+    margin-bottom: 6px;
+    min-height: 2.8rem;
+}
+.tarjeta-precio {
+    color: var(--azul);
+    font-family: Arial, sans-serif;
+    font-size: 1.4rem; font-weight: 900;
+    display: block; margin-bottom: 10px;
+}
+.tarjeta-btn {
+    display: inline-block;
+    background: linear-gradient(90deg, var(--azul-dark), var(--azul));
+    color: #fff; padding: 10px 20px;
+    font-family: Arial, sans-serif; font-weight: 900;
+    font-size: 0.9rem; text-decoration: none;
+    text-transform: uppercase; letter-spacing: 1px;
+    transition: background 0.2s; border: none; cursor: pointer;
+}
+.tarjeta-btn:hover {
+    background: linear-gradient(90deg, var(--rojo), var(--rojo-dark));
+    color: #fff;
+}
+
+@media (max-width: 768px) {
+    .grid-productos { grid-template-columns: repeat(2, 1fr); gap: 1px; padding: 0 8px; }
+    .tarjeta-nombre { font-size: 0.8rem; min-height: 2.4rem; }
+    .tarjeta-precio { font-size: 1rem; }
+    .tarjeta-btn { font-size: 0.75rem; padding: 8px; width: 100%; }
+    .tarjeta-info { padding: 8px 4px 12px; }
+}
+
+/* ── Sección categorías (index) ─────────────────────────────── */
+.seccion-categorias {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px; padding: 20px;
+    background-color: var(--fondo);
+    width: 100%; margin: 0;
+    position: relative;
+}
+
+.enlace-categoria {
+    text-decoration: none; display: block;
+    position: relative; overflow: hidden;
+    /* altura proporcional según el contenido — sin altura fija exagerada */
+    aspect-ratio: 2 / 3;
+    background-color: var(--surface);
+}
+
+.categoria-item {
+    width: 100%; height: 100%; position: relative;
+}
+.categoria-item img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    filter: brightness(0.75);
+    transition: transform 0.6s ease;
+}
+.enlace-categoria:hover img { transform: scale(1.05); }
+
+.texto-superpuesto {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center; width: 100%; color: white;
+    font-size: 2.4rem; font-weight: 900;
+    text-transform: uppercase;
+    text-shadow: 2px 4px 15px rgba(0,0,0,0.9);
+    margin: 0; letter-spacing: 2px;
+    font-family: Arial, sans-serif;
+    pointer-events: none; z-index: 10;
+}
+.texto-superpuesto::after {
+    content: ''; display: block;
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, var(--azul), var(--rojo));
+    margin: 10px auto 0;
+    box-shadow: 0 0 8px rgba(79,195,247,0.5);
+}
+.categoria-item::after { display: none; }
+
+@media (max-width: 768px) {
+    .texto-superpuesto { font-size: 1.6rem; }
+    .seccion-categorias {
+        display: flex; flex-wrap: nowrap;
+        overflow-x: auto; padding: 12px;
+        gap: 10px;
+        scrollbar-width: none;
+    }
+    .seccion-categorias::-webkit-scrollbar { display: none; }
+    .enlace-categoria {
+        flex: 0 0 78%;
+        aspect-ratio: 2 / 3;
+        height: auto;
+    }
+}
+
+/* ── Footer ─────────────────────────────────────────────────── */
+.footer-zaza {
+    text-align: center; padding: 40px 20px;
+    background: var(--fondo2);
+    border-top: 2px solid var(--azul);
+    margin-top: 0; position: relative; z-index: 1;
+}
+.footer-zaza p { font-family: Arial, sans-serif; }
+.footer-zaza .footer-copy { color: var(--borde); font-size: 11px; letter-spacing: 1px; margin-top: 30px; }
+.footer-zaza .footer-label { color: var(--blanco); font-weight: bold; letter-spacing: 2px; font-size: 12px; margin-bottom: 20px; }
+
+/* ── Info de sneakers (snk-info) ────────────────────────────── */
+.snk-info { padding: 14px 10px 18px; text-align: center; }

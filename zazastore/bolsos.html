@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es" translate="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="google" content="notranslate">
+    <meta name="google" content="notranslate">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOLSOS | ZAZASTORE</title>
+    <link rel="icon" href="img/favicon (2).png" type="image/png">
+    <link rel="stylesheet" href="css/style.css?v=1.0">
+    <style>
+        /* Tarjetas estilo negro igual que hombre.html */
+        .ultimo-ind {
+            background: #0a0a0a !important;
+            border-radius: 0 !important;
+            border: none !important;
+            padding: 0 !important;
+            flex: 0 0 280px !important;
+            min-width: 280px !important;
+            overflow: hidden !important;
+            box-shadow: none !important;
+        }
+        .ultimo-ind img {
+            width: 100% !important;
+            aspect-ratio: 3/4 !important;
+            object-fit: cover !important;
+            display: block !important;
+            border-radius: 0 !important;
+            padding: 0 !important;
+            height: auto !important;
+            transition: transform 0.4s ease !important;
+            background: #111 !important;
+        }
+        .ultimo-ind:hover img { transform: scale(1.03) !important; }
+        .snk-info { padding: 14px 10px 18px; text-align: center; }
+        .nombre-pro {
+            color: white !important;
+            font-family: Arial, sans-serif !important;
+            font-weight: 900 !important;
+            font-size: 1.1rem !important;
+            text-transform: uppercase !important;
+            letter-spacing: 1px !important;
+            display: block !important;
+            margin: 12px 10px 6px !important;
+        }
+        .precio {
+            font-family: Arial, sans-serif !important;
+            font-weight: 900 !important;
+            font-size: 1.4rem !important;
+            color: white !important;
+            display: block !important;
+            margin: 0 10px 10px !important;
+        }
+        .boton-comprar-wa {
+            display: block !important;
+            background: white !important;
+            color: black !important;
+            padding: 10px !important;
+            font-family: Arial, sans-serif !important;
+            font-weight: 900 !important;
+            font-size: 0.95rem !important;
+            text-decoration: none !important;
+            text-transform: uppercase !important;
+            letter-spacing: 1px !important;
+            border-radius: 0 !important;
+            margin: 0 10px 14px !important;
+        }
+        .boton-comprar-wa:hover { background: #ddd !important; color: black !important; }
+        .titulo-marca { font-family: Arial, sans-serif !important; font-weight: 900 !important; }
+        .seccion-marca { padding: 20px 0 !important; background-image: none !important; background-attachment: unset !important; }
+        body::before { content: ""; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='120'%3E%3Ctext x='50%25' y='60%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-weight='900' font-size='32' fill='rgba(255,255,255,0.07)' letter-spacing='6' transform='rotate(-25 150 60)'%3ETHUNDERT%3C/text%3E%3C/svg%3E"); background-repeat: repeat; pointer-events: none; z-index: 0; user-select: none; }
+
+        /* === TALLAS ZAPATILLAS === */
+        .tallas-label { color: #888; font-size: 10px; letter-spacing: 2px; font-family: Arial, sans-serif; margin-bottom: 6px; display: block; text-align: center; }
+        .tallas-grupo { display: flex; flex-wrap: wrap; gap: 5px; justify-content: center; margin-bottom: 8px; }
+        .talla-btn {
+            background: transparent; border: 1px solid #444; color: #fff;
+            padding: 5px 9px; font-family: Arial, sans-serif; font-size: 11px;
+            font-weight: 700; cursor: pointer; letter-spacing: 1px; transition: all 0.15s;
+        }
+        .talla-btn:hover { border-color: #fff; }
+        .talla-btn.selected { background: #fff; color: #000; border-color: #fff; }
+
+        /* === GÉNERO === */
+        .genero-grupo { display: flex; gap: 6px; justify-content: center; margin-bottom: 10px; }
+        .genero-btn {
+            background: transparent; border: 1px solid #444; color: #888;
+            padding: 5px 14px; font-family: Arial, sans-serif; font-size: 10px;
+            font-weight: 700; cursor: pointer; letter-spacing: 2px; transition: all 0.15s;
+        }
+        .genero-btn:hover { border-color: #fff; color: #fff; }
+        .genero-btn.selected { border-color: #fff; color: #fff; background: #1a1a1a; }
+        .genero-btn.hombre.selected { border-color: #4a9eff; color: #4a9eff; }
+        .genero-btn.mujer.selected { border-color: #ff6bff; color: #ff6bff; }
+
+        @media (max-width: 768px) {
+            .nombre-pro { font-size: 0.85rem !important; }
+            .precio { font-size: 1.1rem !important; }
+            .boton-comprar-wa { font-size: 0.8rem !important; padding: 8px 10px !important; width: 100% !important; }
+            .talla-btn { padding: 4px 7px; font-size: 10px; }
+        }
+    </style>
+</style>
+</head>
+<body style="background-color: #050d1a; color: white;">
+
+    <div style="position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
+        <a href="https://wa.me/3206081551" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="50" height="50">
+        </a>
+    </div>
+
+    <div id="pageZAZASTORE" style="padding-top:80px;">
+        <div id="headerZAZASTORE" class="fixed-header">
+            <header id="header">
+                <div class="wrapper">
+                    <div id="site-logo">
+                        <a href="index.html" style="text-decoration:none;font-family:Arial,sans-serif;font-weight:900;font-size:1.5rem;letter-spacing:4px;background:linear-gradient(90deg,#0288D1 60%,#E53935 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">ZAZASTORE</a>
+                    </div>
+                    <div class="nav-links">
+                        <nav>
+                            <ul class="d-flex">
+                                <li class="link-header"><a href="index.html">INICIO</a></li>
+                                <li class="link-header"><a href="sneakers.html">SNEAKERS</a></li>
+                                <li class="link-header"><a href="accesorios.html">ACCESORIOS</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </header>
+        </div>
+
+        <main class="contenedor-principal" style="padding-top: 40px;">
+            <h1 class="titulo-seccion-grande" style="color: white; text-align: center; letter-spacing: 15px; font-weight: 900; text-transform: uppercase; margin-bottom: 30px; color: white;">BOLSOS</h1>
+
+
+                <div class="tarjeta item-producto filtro-bolsos">
+                    <div class="tarjeta-img-wrap"><img class="tarjeta-img" src="img/buso1.png" alt="Bolso" style="filter:grayscale(1)"></div>
+                    <div class="tarjeta-info">
+                        <span class="tarjeta-nombre">Bolso Urban Negro</span>
+                        <span class="tarjeta-precio">$ 90.000</span>
+                        <a href="https://wa.me/3206081551?text=Hola,%20me%20interesa%20el%20Bolso%20Urban%20Negro" class="tarjeta-btn">Comprar</a>
+                    </div>
+                </div>
+                <div class="tarjeta item-producto filtro-bolsos">
+                    <div class="tarjeta-img-wrap"><img class="tarjeta-img" src="img/buso1.png" alt="Riñonera" style="filter:sepia(0.5)"></div>
+                    <div class="tarjeta-info">
+                        <span class="tarjeta-nombre">Riñonera Thunder</span>
+                        <span class="tarjeta-precio">$ 70.000</span>
+                        <a href="https://wa.me/3206081551?text=Hola,%20me%20interesa%20la%20Riñonera%20Thunder" class="tarjeta-btn">Comprar</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <div style="text-align: center; padding: 40px 20px; background: #080f1e; border-top: 2px solid #4FC3F7; margin-top: 60px; position: relative; z-index: 1;">
+            <p style="color: white; margin-bottom: 20px; font-weight: bold; font-family: Arial, sans-serif; letter-spacing: 2px; font-size: 12px;">SÍGUENOS EN NUESTRAS REDES</p>
+            <div style="display: flex; justify-content: center; gap: 40px; align-items: center;">
+                <a href="https://www.instagram.com/zazastore_ibg/" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_logo_2022.svg" width="40"></a>
+                <a href="https://chat.whatsapp.com/KRvYQp1eZqj1hCpYJzZqOm" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="40"></a>
+            </div>
+            <p style="color: #1a2f4a; font-size: 11px; margin-top: 30px; font-family: Arial, sans-serif; letter-spacing: 1px;">ZAZASTORE © 2026</p>
+        </div>
+    </div>
+
+    <script>
+        function toggleFiltros() { document.getElementById("opcionesFiltro").classList.toggle("mostrar"); }
+        document.addEventListener("click", function(e) {
+            const menu = document.getElementById("opcionesFiltro");
+            const boton = document.querySelector(".btn-filtro");
+            if (!menu.contains(e.target) && e.target !== boton) menu.classList.remove("mostrar");
+        });
+        function filtrarProductos(categoria) {
+            document.querySelectorAll('.item-producto').forEach(function(p) {
+                if (categoria === 'todos') { p.classList.remove('item-oculto'); }
+                else { p.classList.contains(categoria) ? p.classList.remove('item-oculto') : p.classList.add('item-oculto'); }
+            });
+            document.getElementById("opcionesFiltro").classList.remove("mostrar");
+        }
+    </script>
+</body>
+</html>

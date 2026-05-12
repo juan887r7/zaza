@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="es" translate="no"></html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GORRAS | ZAZASTORE</title>
+    <link rel="icon" href="img/favicon (2).png" type="image/png">
+    <link rel="stylesheet" href="css/style.css?v=1.0">
+    <style>
+        .contenedor-filtros { max-width: 1200px; margin: 0 auto; padding: 0 20px 20px; position: relative; }
+        .btn-filtro { background: none; border: 1px solid #555; color: #fff; padding: 8px 18px; font-family: Arial, sans-serif; font-weight: 900; cursor: pointer; letter-spacing: 2px; font-size: 12px; }
+        .menu-desplegable { display: none; position: absolute; background-color: #111; border: 1px solid #333; z-index: 100; min-width: 150px; top: 36px; left: 20px; }
+        .menu-desplegable a { color: white; padding: 10px 15px; text-decoration: none; display: block; font-size: 12px; font-family: Arial, sans-serif; letter-spacing: 1px; }
+        .menu-desplegable a:hover { background: #222; }
+        .mostrar { display: block !important; }
+        .item-oculto { display: none !important; }
+
+        .grid-productos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .tarjeta { background: #0a0a0a; cursor: pointer; overflow: hidden; }
+        .tarjeta:hover .tarjeta-img { transform: scale(1.03); }
+        .tarjeta-img-wrap { overflow: hidden; aspect-ratio: 3/4; background: #111; }
+        .tarjeta-img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
+
+       .tarjeta-info { padding: 14px 8px 18px; text-align: center; }
+.tarjeta-nombre { color: white; font-family: Arial, sans-serif; font-weight: 900; font-size: 1.4rem !important; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 8px; }
+.tarjeta-precio { color: white; font-family: Arial, sans-serif; font-size: 1.8rem !important; font-weight: 900; display: block; margin-bottom: 14px; }
+.tarjeta-btn { display: inline-block; background: white; color: black !important; padding: 12px 25px; font-family: Arial, sans-serif; font-weight: 900; font-size: 1.1rem !important; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; }
+.tarjeta-btn:hover { background: #ddd; }
+
+@media (max-width: 768px) {
+    .grid-productos { grid-template-columns: repeat(2, 1fr); gap: 1px; padding: 0 8px; }
+    .tarjeta-nombre { font-size: 0.85rem !important; }
+    .tarjeta-precio { font-size: 1.1rem !important; }
+    .tarjeta-btn { font-size: 0.8rem !important; padding: 8px 10px; width: 100%; }
+    .tarjeta-info { padding: 10px 4px 14px; }
+}
+.tarjeta-nombre { min-height: 3.5rem; }
+
+/* === TALLAS === */
+.tallas-label { color: #888; font-size: 10px; letter-spacing: 2px; font-family: Arial, sans-serif; margin-bottom: 6px; display: block; }
+.tallas-grupo { display: flex; flex-wrap: wrap; gap: 5px; justify-content: center; margin-bottom: 10px; }
+.talla-btn {
+    background: transparent; border: 1px solid #444; color: #fff;
+    padding: 5px 10px; font-family: Arial, sans-serif; font-size: 11px;
+    font-weight: 700; cursor: pointer; letter-spacing: 1px; transition: all 0.15s;
+}
+.talla-btn:hover { border-color: #4FC3F7; color: #4FC3F7; }
+.talla-btn.selected { background: #4FC3F7; color: #000; border-color: #4FC3F7; }
+@media (max-width: 768px) { .talla-btn { padding: 4px 8px; font-size: 10px; } }
+
+    /* === MARCA DE AGUA ZAZASTORE === */
+    body {
+        position: relative;
+    }
+    body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='120'%3E%3Ctext x='50%25' y='60%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-weight='900' font-size='32' fill='rgba(255,255,255,0.07)' letter-spacing='6' transform='rotate(-25 150 60)'%3EZAZASTORE%3C/text%3E%3C/svg%3E");
+        background-repeat: repeat;
+        pointer-events: none;
+        z-index: 0;
+        user-select: none;
+    }
+</style>
+</head>
+<body style="background-color: #050d1a; color: white;">
+
+    <div style="position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
+        <a href="https://wa.me/3206081551" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="50" height="50">
+        </a>
+    </div>
+
+    <div id="pageZAZASTORE" style="padding-top:80px;">
+        <div id="headerZAZASTORE" class="fixed-header">
+            <header id="header">
+                <div class="wrapper">
+                    <div id="site-logo">
+                        <a href="index.html" style="text-decoration:none;font-family:Arial,sans-serif;font-weight:900;font-size:1.5rem;letter-spacing:4px;background:linear-gradient(90deg,#0288D1 60%,#E53935 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">ZAZASTORE</a>
+                    </div>
+                    <div class="nav-links">
+                        <nav>
+                            <ul class="d-flex">
+                                <li class="link-header"><a href="index.html">INICIO</a></li>
+                                <li class="link-header"><a href="sneakers.html">SNEAKERS</a></li>
+                                <li class="link-header"><a href="accesorios.html">ACCESORIOS</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </header>
+        </div>
+
+        <main class="contenedor-principal" style="padding-top: 40px;">
+            <h1 class="titulo-seccion-grande" style="color: white; text-align: center; letter-spacing: 15px; font-weight: 900; text-transform: uppercase; margin-bottom: 30px;">GORRAS</h1>
+
+            <div class="contenedor-filtros">
+                <button class="btn-filtro" onclick="toggleFiltros()">FILTROS ⌵</button>
+                <div id="opcionesFiltro" class="menu-desplegable">
+                    <a href="javascript:void(0)" onclick="filtrarProductos('todos')">TODOS</a>
+                    <a href="javascript:void(0)" onclick="filtrarProductos('filtro-vestidos')">CERRADAS</a>
+                </div>
+            </div>
+
+            <div class="grid-productos">
+                <!-- TOPS -->
+                <div class="tarjeta item-producto filtro-tops">
+                    <div class="tarjeta-img-wrap"><img class="tarjeta-img" src="img/buso1.png" alt="Top Chic"></div>
+                    <div class="tarjeta-info">
+                        <span class="tarjeta-nombre">Top Chic Blanco</span>
+                        <span class="tarjeta-precio">$ 65.000</span>
+                        <span class="tallas-label">TALLA</span>
+                        <div class="tallas-grupo">
+                            <button class="talla-btn" onclick="selTalla(this)">XS</button>
+                            <button class="talla-btn" onclick="selTalla(this)">S</button>
+                            <button class="talla-btn" onclick="selTalla(this)">M</button>
+                            <button class="talla-btn" onclick="selTalla(this)">L</button>
+                            <button class="talla-btn" onclick="selTalla(this)">XL</button>
+                        </div>
+                        <a href="#" class="tarjeta-btn" onclick="comprar(this,'Top Chic Blanco','3206081551');return false;">Comprar</a>
+                    </div>
+                </div>
+                <div class="tarjeta item-producto filtro-tops">
+                    <div class="tarjeta-img-wrap"><img class="tarjeta-img" src="img/buso1.png" alt="Top Negro" style="filter:grayscale(1)"></div>
+                    <div class="tarjeta-info">
+                        <span class="tarjeta-nombre">Top Essential Negro</span>
+                        <span class="tarjeta-precio">$ 60.000</span>
+                        <span class="tallas-label">TALLA</span>
+                        <div class="tallas-grupo">
+                            <button class="talla-btn" onclick="selTalla(this)">XS</button>
+                            <button class="talla-btn" onclick="selTalla(this)">S</button>
+                            <button class="talla-btn" onclick="selTalla(this)">M</button>
+                            <button class="talla-btn" onclick="selTalla(this)">L</button>
+                            <button class="talla-btn" onclick="selTalla(this)">XL</button>
+                        </div>
+                        <a href="#" class="tarjeta-btn" onclick="comprar(this,'Top Essential Negro','3206081551');return false;">Comprar</a>
+                    </div>
+                </div>
+                <!-- HOODIES -->
+                <div class="tarjeta item-producto filtro-hoodies">
+                    <div class="tarjeta-img-wrap"><img class="tarjeta-img" src="img/buso1.png" alt="Hoodie Mujer" style="filter:hue-rotate(300deg) saturate(0.5)"></div>
+                    <div class="tarjeta-info">
+                        <span class="tarjeta-nombre">Hoodie Soft</span>
+                        <span class="tarjeta-precio">$ 200.000</span>
+                        <span class="tallas-label">TALLA</span>
+                        <div class="tallas-grupo">
+                            <button class="talla-btn" onclick="selTalla(this)">XS</button>
+                            <button class="talla-btn" onclick="selTalla(this)">S</button>
+                            <button class="talla-btn" onclick="selTalla(this)">M</button>
+                            <button class="talla-btn" onclick="selTalla(this)">L</button>
+                            <button class="talla-btn" onclick="selTalla(this)">XL</button>
+                        </div>
+                        <a href="#" class="tarjeta-btn" onclick="comprar(this,'Hoodie Soft','3206081551');return false;">Comprar</a>
+                    </div>
+                </div>
+                <div class="tarjeta item-producto filtro-hoodies">
+                    <div class="tarjeta-img-wrap"><img class="tarjeta-img" src="img/buso1.png" alt="Hoodie Oversize" style="filter:sepia(0.2)"></div>
+                    <div class="tarjeta-info">
+                        <span class="tarjeta-nombre">Hoodie Oversize</span>
+                        <span class="tarjeta-precio">$ 220.000</span>
+                        <span class="tallas-label">TALLA</span>
+                        <div class="tallas-grupo">
+                            <button class="talla-btn" onclick="selTalla(this)">XS</button>
+                            <button class="talla-btn" onclick="selTalla(this)">S</button>
+                            <button class="talla-btn" onclick="selTalla(this)">M</button>
+                            <button class="talla-btn" onclick="selTalla(this)">L</button>
+                            <button class="talla-btn" onclick="selTalla(this)">XL</button>
+                        </div>
+                        <a href="#" class="tarjeta-btn" onclick="comprar(this,'Hoodie Oversize','3206081551');return false;">Comprar</a>
+                    </div>
+                </div>
+                <!-- VESTIDOS — talla XS a XL -->
+                <div class="tarjeta item-producto filtro-vestidos">
+                    <div class="tarjeta-img-wrap"><img class="tarjeta-img" src="img/buso1.png" alt="Vestido Rojo" style="filter:hue-rotate(200deg)"></div>
+                    <div class="tarjeta-info">
+                        <span class="tarjeta-nombre">Vestido Rojo</span>
+                        <span class="tarjeta-precio">$ 120.000</span>
+                        <span class="tallas-label">TALLA</span>
+                        <div class="tallas-grupo">
+                            <button class="talla-btn" onclick="selTalla(this)">XS</button>
+                            <button class="talla-btn" onclick="selTalla(this)">S</button>
+                            <button class="talla-btn" onclick="selTalla(this)">M</button>
+                            <button class="talla-btn" onclick="selTalla(this)">L</button>
+                            <button class="talla-btn" onclick="selTalla(this)">XL</button>
+                        </div>
+                        <a href="#" class="tarjeta-btn" onclick="comprar(this,'Vestido Rojo','3206081551');return false;">Comprar</a>
+                    </div>
+                </div>
+                <div class="tarjeta item-producto filtro-vestidos">
+                    <div class="tarjeta-img-wrap"><img class="tarjeta-img" src="img/buso1.png" alt="Rosa" style="filter:hue-rotate(300deg) saturate(1.5)"></div>
+                    <div class="tarjeta-info">
+                        <span class="tarjeta-nombre">Rosa Noir</span>
+                        <span class="tarjeta-precio">$ 130.000</span>
+                        <span class="tallas-label">TALLA</span>
+                        <div class="tallas-grupo">
+                            <button class="talla-btn" onclick="selTalla(this)">XS</button>
+                            <button class="talla-btn" onclick="selTalla(this)">S</button>
+                            <button class="talla-btn" onclick="selTalla(this)">M</button>
+                            <button class="talla-btn" onclick="selTalla(this)">L</button>
+                            <button class="talla-btn" onclick="selTalla(this)">XL</button>
+                        </div>
+                        <a href="#" class="tarjeta-btn" onclick="comprar(this,'Rosa Noir','3206081551');return false;">Comprar</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <div style="text-align: center; padding: 40px 20px; background: #080f1e; border-top: 2px solid #4FC3F7; margin-top: 60px; position: relative; z-index: 1;">
+            <p style="color: white; margin-bottom: 20px; font-weight: bold; font-family: Arial, sans-serif; letter-spacing: 2px; font-size: 12px;">SÍGUENOS EN NUESTRAS REDES</p>
+            <div style="display: flex; justify-content: center; gap: 40px; align-items: center;">
+                <a href="https://www.instagram.com/zazastore_ibg/" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_logo_2022.svg" width="40"></a>
+                <a href="https://chat.whatsapp.com/KRvYQp1eZqj1hCpYJzZqOm" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="40"></a>
+            </div>
+            <p style="color: #1a2f4a; font-size: 11px; margin-top: 30px; font-family: Arial, sans-serif; letter-spacing: 1px;">ZAZASTORE © 2026</p>
+        </div>
+    </div>
+
+    <script>
+        function toggleFiltros() { document.getElementById("opcionesFiltro").classList.toggle("mostrar"); }
+        document.addEventListener("click", function(e) {
+            const menu = document.getElementById("opcionesFiltro");
+            const boton = document.querySelector(".btn-filtro");
+            if (!menu.contains(e.target) && e.target !== boton) menu.classList.remove("mostrar");
+        });
+        function filtrarProductos(categoria) {
+            document.querySelectorAll('.item-producto').forEach(function(p) {
+                if (categoria === 'todos') { p.classList.remove('item-oculto'); }
+                else { p.classList.contains(categoria) ? p.classList.remove('item-oculto') : p.classList.add('item-oculto'); }
+            });
+            document.getElementById("opcionesFiltro").classList.remove("mostrar");
+        }
+        function selTalla(btn) {
+            const grupo = btn.closest('.tallas-grupo');
+            grupo.querySelectorAll('.talla-btn').forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected');
+        }
+        function comprar(btn, producto, tel) {
+            const grupo = btn.closest('.tarjeta-info').querySelector('.tallas-grupo');
+            const seleccionada = grupo ? grupo.querySelector('.talla-btn.selected') : null;
+            if (grupo && !seleccionada) {
+                alert('Por favor selecciona una talla antes de continuar.');
+                return;
+            }
+            const talla = seleccionada ? seleccionada.textContent : '';
+            const msg = talla
+                ? `Hola, me interesa el ${producto} en talla ${talla}`
+                : `Hola, me interesa el ${producto}`;
+            window.open(`https://wa.me/${tel}?text=${encodeURIComponent(msg)}`, '_blank');
+        }
+    </script>
+</body>
+</html>

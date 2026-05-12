@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es" translate="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="google" content="notranslate">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ZazaStore | Tu tienda de moda">
+    <title>ZAZASTORE</title>
+    <link rel="icon" href="img/favicon (2).png" type="image/png">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .portada {
+            background-image: url("img/banneer.png") !important;
+            background-size: cover !important;
+            background-position: center !important;
+            background-color: rgba(5,13,26,0.55) !important;
+            background-blend-mode: overlay !important;
+            height: 100vh; width: 100%;
+        }
+        @media (max-width: 768px) {
+            .portada { height: 220px !important; background-size: contain !important; background-blend-mode: normal !important; }
+        }
+        body::before {
+            content: "" !important; position: fixed !important; inset: 0 !important;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='120'%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-weight='900' font-size='26' fill='rgba(79,195,247,0.08)' letter-spacing='4' transform='rotate(-25 200 60)'%3AZAZASTORE%3C/text%3E%3C/svg%3E") !important;
+            background-repeat: repeat !important; pointer-events: none !important; z-index: 0 !important; user-select: none !important;
+        }
+        .seccion-categorias { position: relative !important; }
+        .seccion-categorias::before {
+            content: "" !important; position: absolute !important; inset: 0 !important;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='120'%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-weight='900' font-size='26' fill='rgba(79,195,247,0.1)' letter-spacing='4' transform='rotate(-25 200 60)'%3AZAZASTORE%3C/text%3E%3C/svg%3E") !important;
+            background-repeat: repeat !important; pointer-events: none !important; z-index: 2 !important; user-select: none !important;
+        }
+        .enlace-categoria { position: relative !important; z-index: 3 !important; }
+        .texto-superpuesto {
+            position: absolute !important; top: 50% !important; bottom: auto !important;
+            left: 50% !important; transform: translate(-50%,-50%) !important;
+            text-align: center !important; width: 100% !important; color: white !important;
+            font-size: 3.5rem !important; font-weight: 900 !important; text-transform: uppercase !important;
+            text-shadow: 2px 4px 15px rgba(0,0,0,0.9) !important; margin: 0 !important;
+            letter-spacing: 2px !important; font-family: Arial, sans-serif !important;
+            pointer-events: none !important; z-index: 10 !important;
+        }
+        .texto-superpuesto::after {
+            content: '' !important; display: block !important; width: 60px !important; height: 3px !important;
+            background: linear-gradient(90deg,#4FC3F7,#E53935) !important; margin: 10px auto 0 !important;
+        }
+        .categoria-item::after { display: none !important; }
+        @media (max-width: 768px) { .texto-superpuesto { font-size: 2rem !important; } }
+        .contenedor-principal { padding-bottom: 0 !important; margin-bottom: 0 !important; position: relative; }
+        .titulo-seccion-grande { margin: 20px 0 10px !important; }
+        .bg-gray.seccion-ultimo { background-color: transparent !important; padding: 10px !important; }
+        .carrusel-wrapper { background-color: transparent !important; padding-bottom: 0 !important; margin-bottom: 0 !important; }
+        .seccion-categorias { margin-top: 0 !important; margin-bottom: 0 !important; }
+        .contenedor-principal::before {
+            content: ""; position: absolute; inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='120'%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-weight='900' font-size='26' fill='rgba(79,195,247,0.06)' letter-spacing='4' transform='rotate(-25 200 60)'%3AZAZASTORE%3C/text%3E%3C/svg%3E");
+            background-repeat: repeat; pointer-events: none; z-index: 0; user-select: none;
+        }
+        .carrusel-wrapper, .seccion-ultimo, .ultimo-ind, .flecha-carrusel { position: relative; z-index: 2; }
+        .ultimo-info { padding: 12px 10px 4px; text-align: center; }
+        .ultimo-ind .nombre-pro { color: white !important; font-size: 1rem !important; margin: 0 0 4px !important; display: block !important; font-family: Arial !important; font-weight: 900 !important; text-transform: uppercase !important; }
+        .ultimo-ind .precio-ultimo { color: #4FC3F7 !important; font-family: Arial !important; font-weight: 900 !important; font-size: 1.2rem !important; display: block !important; margin-bottom: 8px !important; }
+        .ultimo-ind .boton-comprar-wa { display: block !important; background: linear-gradient(90deg,#0288D1,#4FC3F7) !important; color: #fff !important; padding: 10px !important; font-family: Arial !important; font-weight: 900 !important; font-size: 0.9rem !important; text-decoration: none !important; text-transform: uppercase !important; border-radius: 0 !important; margin: 4px 10px 14px !important; letter-spacing: 1px !important; }
+        .ultimo-ind .boton-comprar-wa:hover { background: linear-gradient(90deg,#E53935,#ef5350) !important; }
+        .tallas-label { color: #666; font-size: 9px; letter-spacing: 2px; font-family: Arial; margin-bottom: 5px; display: block; text-align: center; }
+        .tallas-grupo { display: flex; flex-wrap: wrap; gap: 4px; justify-content: center; margin-bottom: 8px; }
+        .talla-btn { background: transparent; border: 1px solid #1a2f4a; color: #fff; padding: 4px 8px; font-family: Arial; font-size: 10px; font-weight: 700; cursor: pointer; transition: all 0.15s; }
+        .talla-btn:hover { border-color: #4FC3F7; color: #4FC3F7; }
+        .talla-btn.selected { background: #4FC3F7; color: #000; border-color: #4FC3F7; }
+    </style>
+</head>
+<body style="background-color: #050d1a; color: white;">
+
+    <div style="position:fixed;bottom:20px;right:20px;z-index:1000;">
+        <a href="https://wa.me/3206081551" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" style="width:50px;height:50px;">
+        </a>
+    </div>
+
+    <div id="pageZAZASTORE" style="padding-top:80px;">
+
+        <div id="headerZAZASTORE" class="fixed-header">
+            <header id="header">
+                <div class="wrapper">
+                    <div id="site-logo">
+                        <a href="index.html" style="text-decoration:none;font-family:Arial,sans-serif;font-weight:900;font-size:1.5rem;letter-spacing:4px;background:linear-gradient(90deg,#0288D1 60%,#E53935 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">ZAZASTORE</a>
+                    </div>
+                    <div class="nav-links">
+                        <nav>
+                            <ul class="d-flex">
+                                <li class="link-header"><a href="sneakers.html">SNEAKERS</a></li>
+                                <li class="link-header"><a href="bolsos.html">ACCESORIOS</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </header>
+        </div>
+
+        <div class="portada"></div>
+
+        <main class="contenedor-principal">
+            <h1 class="titulo-seccion-grande">LO ÚLTIMO</h1>
+            <div class="carrusel-wrapper">
+                <button class="flecha-carrusel prev" onclick="moverCarrusel(-280)"> &lt; </button>
+                <div class="bg-gray seccion-ultimo" id="contenedor-carrusel">
+
+                    <div class="ultimo-ind" style="background:#0d1a2e !important;border:1px solid #1a2f4a !important;border-radius:0 !important;padding:0 !important;box-shadow:none !important;min-width:260px;max-width:260px;flex-shrink:0;overflow:hidden;">
+                        <img class="producto" src="img/buso1.png" alt="Producto" style="width:100%;aspect-ratio:1/1;object-fit:cover;object-position:center top;display:block;border-radius:0;padding:0;height:auto;margin:0;">
+                        <div class="ultimo-info">
+                            <span class="nombre-pro">NOMBRE PRODUCTO</span>
+                            <span class="precio-ultimo">$ 000.000</span>
+                            <span class="tallas-label">TALLA</span>
+                            <div class="tallas-grupo">
+                                <button class="talla-btn" onclick="selTalla(this)">XS</button>
+                                <button class="talla-btn" onclick="selTalla(this)">S</button>
+                                <button class="talla-btn" onclick="selTalla(this)">M</button>
+                                <button class="talla-btn" onclick="selTalla(this)">L</button>
+                                <button class="talla-btn" onclick="selTalla(this)">XL</button>
+                            </div>
+                        </div>
+                        <a href="#" class="boton-comprar-wa" onclick="comprarUltimo(this,'Producto','3206081551');return false;">COMPRAR</a>
+                    </div>
+
+                    <div class="ultimo-ind" style="background:#0d1a2e !important;border:1px solid #1a2f4a !important;border-radius:0 !important;padding:0 !important;box-shadow:none !important;min-width:260px;max-width:260px;flex-shrink:0;overflow:hidden;">
+                        <img class="producto" src="img/sneakers1.png" alt="Zapato" style="width:100%;aspect-ratio:1/1;object-fit:cover;object-position:center top;display:block;border-radius:0;padding:0;height:auto;margin:0;">
+                        <div class="ultimo-info">
+                            <span class="nombre-pro">NOMBRE ZAPATO</span>
+                            <span class="precio-ultimo">$ 000.000</span>
+                            <span class="tallas-label">TALLA</span>
+                            <div class="tallas-grupo">
+                                <button class="talla-btn" onclick="selTalla(this)">36</button>
+                                <button class="talla-btn" onclick="selTalla(this)">37</button>
+                                <button class="talla-btn" onclick="selTalla(this)">38</button>
+                                <button class="talla-btn" onclick="selTalla(this)">39</button>
+                                <button class="talla-btn" onclick="selTalla(this)">40</button>
+                                <button class="talla-btn" onclick="selTalla(this)">41</button>
+                                <button class="talla-btn" onclick="selTalla(this)">42</button>
+                                <button class="talla-btn" onclick="selTalla(this)">43</button>
+                            </div>
+                        </div>
+                        <a href="#" class="boton-comprar-wa" onclick="comprarUltimo(this,'Zapato','3206081551');return false;">COMPRAR</a>
+                    </div>
+
+                </div>
+                <button class="flecha-carrusel next" onclick="moverCarrusel(280)"> &gt; </button>
+            </div>
+        </main>
+
+        <div class="seccion-categorias">
+            <a href="hombre.html" class="enlace-categoria">
+                <div class="categoria-item">
+                    <img src="img/conjunto.png" alt="Hombre">
+                    <div class="texto-superpuesto">HOMBRE</div>
+                </div>
+            </a>
+            <a href="bolsos.html" class="enlace-categoria">
+                <div class="categoria-item">
+                    <img src="img/bolso.png" alt="Bolsos">
+                    <div class="texto-superpuesto">BOLSOS</div>
+                </div>
+            </a>
+            <a href="gorras.html" class="enlace-categoria">
+                <div class="categoria-item">
+                    <img src="img/gorra.png" alt="Gorras">
+                    <div class="texto-superpuesto">GORRAS</div>
+                </div>
+            </a>
+        </div>
+
+        <div style="text-align:center;padding:40px 20px;background:#080f1e;border-top:2px solid #4FC3F7;margin-top:0;position:relative;z-index:1;">
+            <p style="color:white;margin-bottom:20px;font-weight:bold;font-family:Arial;letter-spacing:2px;font-size:12px;">SÍGUENOS EN NUESTRAS REDES</p>
+            <div style="display:flex;justify-content:center;gap:40px;align-items:center;">
+                <a href="https://www.instagram.com/zazastore_ibg/" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_logo_2022.svg" width="40"></a>
+                <a href="https://wa.me/3206081551" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="40"></a>
+            </div>
+            <p style="color:#1a2f4a;font-size:11px;margin-top:30px;font-family:Arial;letter-spacing:1px;">ZAZASTORE © 2026</p>
+        </div>
+
+    </div>
+
+    <script>
+        function moverCarrusel(d) { document.getElementById('contenedor-carrusel').scrollBy({left:d,behavior:'smooth'}); }
+        function selTalla(btn) {
+            btn.closest('.tallas-grupo').querySelectorAll('.talla-btn').forEach(b=>b.classList.remove('selected'));
+            btn.classList.add('selected');
+        }
+        function comprarUltimo(btn, producto, tel) {
+            const card = btn.closest('.ultimo-ind');
+            const talla = card.querySelector('.talla-btn.selected');
+            if (card.querySelector('.tallas-grupo') && !talla) { alert('Por favor selecciona una talla.'); return; }
+            const msg = talla ? `Hola ZazaStore, me interesa: ${producto} - Talla: ${talla.textContent}` : `Hola ZazaStore, me interesa: ${producto}`;
+            window.open(`https://wa.me/${tel}?text=${encodeURIComponent(msg)}`, '_blank');
+        }
+    </script>
+</body>
+</html>
